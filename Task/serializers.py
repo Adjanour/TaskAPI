@@ -99,10 +99,26 @@ class TaskAssignmentSerializer(serializers.ModelSerializer):
         fields = ('tkaTask','tkaAssignee','tkaAssigner')
 
 class TaskViewSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = TaskView
-        fields = '__all__'
-
+        fields = ('taskId',
+            'taskName',
+            'taskDescription',
+            'taskPriority',
+            'taskStatus',
+            'tkaAssigner_id',
+            'taskStartDate',
+            'taskCreatedDate',
+            'taskEndDate',
+            'AssignerFullName',
+            'tkaAssignee_id',
+            'tkaId',
+            'tkaTask_id',
+            'fullName', 
+            'taskDuration')
+        
+    
 class CustomTaskCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task

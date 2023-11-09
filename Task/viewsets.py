@@ -59,8 +59,6 @@ class TaskPriorityViewSet(viewsets.ModelViewSet):
     queryset = Tblpriority.objects.all()
     serializer_class = TaskPrioritySerializer
 
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import viewsets
+
 
 

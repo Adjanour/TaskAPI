@@ -65,6 +65,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Restrict allowed origins in production to enhance security.
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+     "http://localhost:3001",
 ]
 
 TEMPLATES = [

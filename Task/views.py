@@ -101,6 +101,8 @@ class TaskCreateViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'create':
             return CustomTaskCreateSerializer
+        elif self.action == 'put':
+            return CustomTaskCreateSerializer
         else:
             return TaskSerializer
 

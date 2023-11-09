@@ -1,5 +1,6 @@
 from django.db import models
 from User.models import User
+from django.utils import timezone
 
 class TaskPriority(models.Model):
     priorityId = models.AutoField(db_column='prIdpk', primary_key=True)  # Field name made lowercase.
@@ -113,10 +114,15 @@ class TaskView(models.Model):
     taskPriority = models.CharField(max_length=255)
     taskStatus = models.CharField(max_length=255)
     tkaAssigner_id = models.IntegerField()
+    taskStartDate = models.DateField(default=timezone.now)
+    taskCreatedDate = models.DateTimeField(default=timezone.now)
+    taskEndDate = models.DateField(default=timezone.now)
     AssignerFullName = models.CharField(max_length=255)
     tkaAssignee_id = models.ForeignKey(User, on_delete=models.CASCADE) 
+    tkaId = models.IntegerField()
     tkaTask_id = models.IntegerField()
     fullName = models.CharField(max_length=255)
+    taskDuration = models.IntegerField()
 
     class Meta:
         managed = False

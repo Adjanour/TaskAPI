@@ -6,8 +6,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 # Create your models here.
 
 
-
-
 class UserMangager(BaseUserManager):
     """Manager for users"""
 
