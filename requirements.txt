@@ -1,7 +1,7 @@
 ﻿asgiref==3.7.2
 attrs==23.1.0
 Django==3.2.23
-django-cors-headers==4.3.0
+django-cors-headers==4.1.0
 django-filter==23.3
 djangorestframework==3.14.0
 drf-nested-routers==0.93.4
