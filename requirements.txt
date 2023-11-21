@@ -15,7 +15,7 @@ PyMySQL==1.1.0
 pytz==2023.3.post1
 PyYAML==6.0.1
 referencing==0.8.9
-rpds-py==0.10.6
+
 sqlparse==0.4.4
 tzdata==2023.3
 uritemplate==4.1.1
