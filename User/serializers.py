@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model, authenticate
 from django.utils.translation import gettext as _
 
 from rest_framework import serializers
+from User.models import User
 
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for the user object"""
@@ -54,3 +55,7 @@ class AuthTokenSerializer(serializers.Serializer):
 
         return attrs
 
+class UserSerializerAll(serializers.ModelSerializer):
+    class Meta:
+        Model=User
+        fields='__all__'

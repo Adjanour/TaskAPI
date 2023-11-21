@@ -1,10 +1,11 @@
 """Views for the user api"""
 
-from rest_framework import  generics, authentication,permissions
+from rest_framework import  generics, authentication,permissions,viewsets
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 
 from User.serializers import UserSerializer, AuthTokenSerializer
+from User.models import User
 
 class CreateUserView(generics.CreateAPIView):   
     """Create a new user in the system"""
@@ -25,3 +26,8 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         """Retrieve the authenticated user"""
         return self.request.user
+    
+class UsersView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+

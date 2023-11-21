@@ -123,6 +123,7 @@ class TaskView(models.Model):
     tkaTask_id = models.IntegerField()
     fullName = models.CharField(max_length=255)
     taskDuration = models.IntegerField()
+    taskProgress = models.DecimalField(max_digits=5, decimal_places=2)
 
     class Meta:
         managed = False

@@ -69,21 +69,22 @@ from rest_framework import viewsets,authentication,permissions
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 
-from .models import TaskAssignment,TaskView,User,Task,TaskStatus,TaskPriority
-from .serializers import TaskSerializer, TaskViewSerializer,StatusSerializer,TaskAssignmentSerializer,CustomTaskCreateSerializer,PrioritySerializer
+from .models import TaskAssignment,TaskView,User,Task,TaskStatus,TaskPriority,Team
+from .serializers import TaskSerializer, TaskViewSerializer,StatusSerializer,TaskAssignmentSerializer,CustomTaskCreateSerializer,PrioritySerializer,TeamSerializer
 
 from django.http import JsonResponse
 
 
 class TaskViewSet(viewsets.ModelViewSet):
-    queryset = TaskAssignment.objects.all()
-    authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    queryset = TaskView.objects.all()
+    # authentication_classes = [authentication.TokenAuthentication]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
         if self.request.method == 'GET':
-            return TaskView.objects.filter(tkaAssignee_id= user)
+            return TaskView.objects.all()
+            # return TaskView.objects.filter(tkaAssignee_id= user)
         else:
             return TaskAssignment.objects.all()
     
@@ -95,8 +96,8 @@ class TaskViewSet(viewsets.ModelViewSet):
 
 class TaskCreateViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
-    authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    # authentication_classes = [authentication.TokenAuthentication]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def get_serializer_class(self):
         if self.action == 'create':
@@ -138,3 +139,7 @@ class StatusViewSet(viewsets.ModelViewSet):
 class PriorityViewSet(viewsets.ModelViewSet):
     queryset = TaskPriority.objects.all()
     serializer_class = PrioritySerializer
+
+class TeamViewSet(viewsets.ModelViewSet):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer

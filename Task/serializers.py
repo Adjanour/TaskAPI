@@ -80,13 +80,37 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
-from Task.models import TaskAssignment, TaskView,Task,TaskStatus,TaskPriority
+from Task.models import TaskAssignment, TaskView,Task,TaskStatus,TaskPriority,Team,Project
+import datetime
 
+def parse_time_format(time_string):
+    # Parse the time string into a datetime object
+    time_object = datetime.datetime.strptime(time_string, '%Y-%m-%dT%H:%M:%S.%fZ')
+
+    # Convert the datetime object to a format that Django can handle
+    django_time_format = '%Y-%m-%dT%H:%M:%S.%fZ'
+    django_time_string = time_object.strftime(django_time_format)
+
+    return django_time_string
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = ('taskId','taskName','taskDescription','taskStatusId','taskPriorityId','taskStartDate','taskEndDate')
-    
+
+# class TaskSerializer(serializers.ModelSerializer):
+#     def to_representation(self, instance):
+#         representation = super().to_representation(instance)
+
+#         # Format taskStartDate and taskEndDate to the desired format
+#         representation['taskStartDate'] = instance.taskStartDate.strftime('%Y-%m-%d')
+#         representation['taskEndDate'] = instance.taskEndDate.strftime('%Y-%m-%d')
+
+#         return representation
+
+#     class Meta:
+#         model = Task
+#         fields = ('taskId', 'taskName', 'taskDescription', 'taskStatusId', 'taskPriorityId', 'taskStartDate', 'taskEndDate')
+
     # def create(self, validated_data):
     #     user = 
     #     new_task = Task.objects.create(**validated_data)
@@ -116,7 +140,8 @@ class TaskViewSerializer(serializers.ModelSerializer):
             'tkaId',
             'tkaTask_id',
             'fullName', 
-            'taskDuration')
+            'taskDuration',
+            'taskProgress')
         
     
 class CustomTaskCreateSerializer(serializers.ModelSerializer):
@@ -141,4 +166,7 @@ class PrioritySerializer(serializers.ModelSerializer):
         model = TaskPriority
         fields = '__all__'
 
-    
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        fields = '__all__'
