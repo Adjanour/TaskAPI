@@ -7,6 +7,7 @@ from User import views
 
 router = DefaultRouter()
 router.register('users',views.UsersView)
+router.register('userdetails',views.UserDetailsView)
 
 urlpatterns = [
     path('create/',views.CreateUserView.as_view(),name='create'),

@@ -68,15 +68,21 @@
 from rest_framework import viewsets,authentication,permissions
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import TaskAssignment,TaskView,User,Task,TaskStatus,TaskPriority,Team
-from .serializers import TaskSerializer, TaskViewSerializer,StatusSerializer,TaskAssignmentSerializer,CustomTaskCreateSerializer,PrioritySerializer,TeamSerializer
+from .serializers import TaskSerializer,TaskFilter, TaskViewSerializer,StatusSerializer,TaskAssignmentSerializer,CustomTaskCreateSerializer,PrioritySerializer,TeamSerializer
 
 from django.http import JsonResponse
 
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = TaskView.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['taskStatus']
+    ordering_fields = ['taskStartDate','taskEndDate']
+    ordering_fields = ['taskStartDate']
+    
     # authentication_classes = [authentication.TokenAuthentication]
     # permission_classes = [permissions.IsAuthenticated]
 

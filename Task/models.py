@@ -1,7 +1,7 @@
 from django.db import models
 from User.models import User
 from django.utils import timezone
-
+import uuid 
 class TaskPriority(models.Model):
     priorityId = models.AutoField(db_column='prIdpk', primary_key=True)  # Field name made lowercase.
     priorityName = models.CharField(db_column='prName', max_length=255)  # Field name made lowercase.
@@ -50,6 +50,7 @@ class Subtask(models.Model):
 
 class Task(models.Model):
     taskId = models.AutoField(db_column='tskIdpk', primary_key=True)  # Field name made lowercase.
+    taskSlug = models.UUIDField(default=uuid.uuid4, editable=False, unique=True,db_column='tskSlug')
     taskName = models.CharField(db_column='tskName', max_length=255)  # Field name made lowercase.
     taskDescription = models.CharField(db_column='tskDescription', max_length=255)  # Field name made lowercase.
     taskStatusId = models.IntegerField(db_column='statusId', blank=True, null=True)  # Field name made lowercase.
@@ -109,6 +110,7 @@ class Team(models.Model):
 
 class TaskView(models.Model):
     taskId = models.IntegerField(primary_key=True)
+    taskSlug = models.UUIDField(editable=False, unique=True)
     taskName = models.CharField(max_length=255)
     taskDescription = models.TextField()
     taskPriority = models.CharField(max_length=255)

@@ -4,7 +4,7 @@ from rest_framework import  generics, authentication,permissions,viewsets
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 
-from User.serializers import UserSerializer, AuthTokenSerializer
+from User.serializers import UserSerializer, AuthTokenSerializer,UserDetailsSerializer
 from User.models import User
 
 class CreateUserView(generics.CreateAPIView):   
@@ -31,3 +31,6 @@ class UsersView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+class UserDetailsView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserDetailsSerializer

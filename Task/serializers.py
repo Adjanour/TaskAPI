@@ -82,6 +82,8 @@ from django.contrib.auth import get_user_model
 
 from Task.models import TaskAssignment, TaskView,Task,TaskStatus,TaskPriority,Team,Project
 import datetime
+import django_filters
+
 
 def parse_time_format(time_string):
     # Parse the time string into a datetime object
@@ -141,7 +143,8 @@ class TaskViewSerializer(serializers.ModelSerializer):
             'tkaTask_id',
             'fullName', 
             'taskDuration',
-            'taskProgress')
+            'taskProgress',
+            'taskSlug',)
         
     
 class CustomTaskCreateSerializer(serializers.ModelSerializer):
@@ -170,3 +173,8 @@ class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
         fields = '__all__'
+        
+class TaskFilter(django_filters.FilterSet):
+    class Meta:
+        model = TaskView
+        fields = {'taskStatus':['exact'],'taskPriority':['exact'],'tkaAssigner_id':['exact']}
