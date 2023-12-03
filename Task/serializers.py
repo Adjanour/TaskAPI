@@ -1,79 +1,12 @@
-# from rest_framework import serializers 
-# from task.models import Tbluser,Tbltask,TblTask2,Tbltaskassignment, TaskDetails, SubTaskDetails, UserDetails,Tblteam,Tblproject,TaskAssignment,Tbltaskstatus,Tblpriority
 
-# class TaskSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Tbltask
-#         fields = '__all__'
-#         # fields = ('tskidpk',
-#         #           'tskname',
-#         #           'tskdescription',
-#         #           'statusid',
-#         #         'tskcreateddate',
-#         #         'tskpriorityidfk',
-#         #         'startdate',
-#         #         'tskenddate',
-#         #         'tskisactive')
-# class TaskAddSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = TblTask2
-#         fields = '__all__'
-# class TaskDetailsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = TaskDetails
-#         fields = '__all__'
 
-# class UserPostSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Tbluser
-#         fields = (
-#             'userName',
-#             'userEmail',
-#             'userPassword',
-#             'userFirstname',
-#             'userLastname',
-#             'userOthername',
-#             'userGender',
-#             'userDob',
-#             'userTeamIdfk',
-#             'userMobile',
-#             'userIsActive'
-#         )
 
-# class SubtaskDetailsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = SubTaskDetails
-#         fields = '__all__'
 
-# class UserDetailsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = UserDetails
-#         fields = '__all__'
 
-# class TaskAssignmentSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = TaskAssignment
-#         fields = '__all__'
 
-# class TeamDetailsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Tblteam
-#         fields = '__all__'
 
-# class ProjectDetailsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Tblproject
-#         fields = '__all__'
 
-# class TaskStatusSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Tbltaskstatus
-#         fields = '__all__'
 
-# class TaskPrioritySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Tblpriority
-#         fields = '__all__'
 
 """Serializers related to tasks"""
 
@@ -99,19 +32,11 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Task
         fields = ('taskId','taskName','taskDescription','taskStatusId','taskPriorityId','taskStartDate','taskEndDate')
 
-# class TaskSerializer(serializers.ModelSerializer):
-#     def to_representation(self, instance):
-#         representation = super().to_representation(instance)
 
 #         # Format taskStartDate and taskEndDate to the desired format
-#         representation['taskStartDate'] = instance.taskStartDate.strftime('%Y-%m-%d')
-#         representation['taskEndDate'] = instance.taskEndDate.strftime('%Y-%m-%d')
 
 #         return representation
 
-#     class Meta:
-#         model = Task
-#         fields = ('taskId', 'taskName', 'taskDescription', 'taskStatusId', 'taskPriorityId', 'taskStartDate', 'taskEndDate')
 
     # def create(self, validated_data):
     #     user = 
