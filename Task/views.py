@@ -67,11 +67,10 @@
 
 from rest_framework import viewsets,authentication,permissions
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .models import TaskAssignment,TaskView,User,Task,TaskStatus,TaskPriority,Team
-from .serializers import TaskSerializer,TaskFilter, TaskViewSerializer,StatusSerializer,TaskAssignmentSerializer,CustomTaskCreateSerializer,PrioritySerializer,TeamSerializer
+from .models import TaskAssignment,TaskView,Task,TaskStatus,TaskPriority,Team
+from .serializers import TaskSerializer,TaskViewSerializer,StatusSerializer,TaskAssignmentSerializer,CustomTaskCreateSerializer,PrioritySerializer,TeamSerializer
 
 from django.http import JsonResponse
 
