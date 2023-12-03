@@ -104,9 +104,6 @@ DATABASES = {
 }
 
 
-# AUTHENTICATION_BACKENDS = [
-#     'User.authentication.UserAuthBackend'
-# ]
 
 AUTH_USER_MODEL = 'User.User'
 
