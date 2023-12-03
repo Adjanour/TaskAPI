@@ -1,8 +1,6 @@
 from rest_framework import viewsets
-from .models import Tbltaskassignment,TblTask2, TaskDetails, SubTaskDetails, UserDetails, Tblteam, Tblproject, TaskAssignment, Tbltaskstatus, Tblpriority
+from .models import TblTask2, TaskDetails, SubTaskDetails, UserDetails, Tblteam, Tblproject, TaskAssignment, Tbltaskstatus, Tblpriority
 from .serializers import UserPostSerializer,TaskSerializer,TaskAddSerializer, TaskDetailsSerializer, SubtaskDetailsSerializer, UserDetailsSerializer, TaskAssignmentSerializer, TeamDetailsSerializer, ProjectDetailsSerializer, TaskStatusSerializer, TaskPrioritySerializer
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
 
 
 

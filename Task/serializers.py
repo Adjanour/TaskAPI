@@ -78,9 +78,8 @@
 """Serializers related to tasks"""
 
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
 
-from Task.models import TaskAssignment, TaskView,Task,TaskStatus,TaskPriority,Team,Project
+from Task.models import TaskAssignment, TaskView,Task,TaskStatus,TaskPriority,Team
 import datetime
 import django_filters
 
